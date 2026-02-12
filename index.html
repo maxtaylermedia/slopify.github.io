@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Slopify – Audio Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+  <header class="header">
+    <div class="logo">🎵 Slopify</div>
+  </header>
+
+  <div class="content">
+    <!-- Track List -->
+    <aside class="track-list">
+      <div class="scroll-bar">
+        <span>▲</span>
+        <div class="bar"></div>
+        <span>▼</span>
+      </div>
+
+      <div class="tracks">
+        <div class="track active" 
+             data-audio="audio/track1.mp3"
+             data-title="Dark Forest Ambience"
+             data-artist="Your Name"
+             data-context="As heard in: Fantasy RPG Prototype"
+             data-image="images/art1.png">
+          <img src="images/art1.png" />
+          <div>
+            <strong>Your Name</strong>
+            <p>Dark Forest Ambience</p>
+          </div>
+        </div>
+
+        <div class="track"
+             data-audio="audio/track2.mp3"
+             data-title="Combat Loop"
+             data-artist="Your Name"
+             data-context="As heard in: Action Game Demo"
+             data-image="images/art2.png">
+          <img src="images/art2.png" />
+          <div>
+            <strong>Your Name</strong>
+            <p>Combat Loop</p>
+          </div>
+        </div>
+
+        <div class="track"
+             data-audio="audio/track3.mp3"
+             data-title="UI Sound Pack"
+             data-artist="Your Name"
+             data-context="As heard in: Sci-Fi Strategy UI"
+             data-image="images/art3.png">
+          <img src="images/art3.png" />
+          <div>
+            <strong>Your Name</strong>
+            <p>UI Sound Pack</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Player -->
+    <main class="player">
+      <img id="main-image" src="images/art1.png" />
+
+      <div class="info">
+        <h2 id="song-title">Dark Forest Ambience</h2>
+        <h3 id="artist-name">Your Name</h3>
+        <p id="context">As heard in: Fantasy RPG Prototype</p>
+      </div>
+
+      <audio id="audio" controls src="audio/track1.mp3"></audio>
+    </main>
+  </div>
+</div>
+
+<script>
+  const tracks = document.querySelectorAll('.track');
+  const audio = document.getElementById('audio');
+  const title = document.getElementById('song-title');
+  const artist = document.getElementById('artist-name');
+  const context = document.getElementById('context');
+  const image = document.getElementById('main-image');
+
+  tracks.forEach(track => {
+    track.addEventListener('click', () => {
+      tracks.forEach(t => t.classList.remove('active'));
+      track.classList.add('active');
+
+      audio.src = track.dataset.audio;
+      title.textContent = track.dataset.title;
+      artist.textContent = track.dataset.artist;
+      context.textContent = track.dataset.context;
+      image.src = track.dataset.image;
+
+      audio.play();
+    });
+  });
+</script>
+
+</body>
+</html>
