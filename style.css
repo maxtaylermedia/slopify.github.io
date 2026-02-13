@@ -11,7 +11,7 @@ body {
 .app {
   border: 3px dotted #333;
   padding: 20px;
-  background: rgb(60, 230, 151);
+  background: #53E092;
   max-width: 900px;
   margin: auto;
 }
